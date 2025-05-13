@@ -1,0 +1,15 @@
+CREATE TABLE [dbo].[sup_details] (
+    [SUP_ID]            VARCHAR (150) NOT NULL,
+    [SUP_NAME]          VARCHAR (100) NULL,
+    [SUP_BILL_ADD]      VARCHAR (255) NULL,
+    [SUP_SHIP_ADD]      VARCHAR (255) NULL,
+    [SUP_CONTACT]       VARCHAR (15)  NULL,
+    [SUP_EMAIL_ID]      VARCHAR (100) NULL,
+    [SUP_GST_NO]        VARCHAR (100) NULL,
+    [SUP_STATE_CODE_NO] VARCHAR (10)  NULL,
+    CONSTRAINT [PK_sup_details_SUP_ID] PRIMARY KEY CLUSTERED ([SUP_ID] ASC)
+);
+
+
+GO
+

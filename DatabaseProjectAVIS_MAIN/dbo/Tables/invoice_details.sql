@@ -1,0 +1,18 @@
+CREATE TABLE [dbo].[invoice_details] (
+    [INVOICE_NO]              INT             NOT NULL,
+    [INVOICE_DATE]            DATE            NULL,
+    [INVOICE_PART_NO]         VARCHAR (50)    NULL,
+    [INVOICE_DESC]            VARCHAR (255)   NULL,
+    [INVOICE_PART_COND]       VARCHAR (100)   NULL,
+    [INVOICE_PART_QUANTITY]   INT             NULL,
+    [INVOICE_PART_HSN]        VARCHAR (20)    NULL,
+    [INVOICE_GST_NO]          VARCHAR (20)    NULL,
+    [INVOICE_GST_PERCENTAGE]  DECIMAL (5, 2)  NULL,
+    [INVOICE_PART_UNIT_PRICE] DECIMAL (10, 2) NULL,
+    [INVOICE_PART_AMOUNT]     DECIMAL (12, 2) NULL,
+    PRIMARY KEY CLUSTERED ([INVOICE_NO] ASC)
+);
+
+
+GO
+

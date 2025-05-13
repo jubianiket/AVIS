@@ -17,7 +17,41 @@ function searchData(tab) {
         if (data.length) {
           const table = document.createElement('table');
           const headers = Object.keys(data[0]);
-          table.innerHTML = `<tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr>`;
+
+          // Mapping SQL column names to display names
+          const columnDisplayNames = {
+            inventory: {
+              INVN_ID: "ID",
+              INVN_NAME: "Item Name",
+              INVN_RATE: "Rate",
+              INVN_CODE: "Item Code",
+              INVN_RATE_CURRENCY: "Currency"
+            },
+            customers: {
+              CUST_ID: "ID",
+              CUST_NAME: "Customer Name",
+              CUST_BILL_ADD: "Billing Address",
+              CUST_SHIP_ADD: "Shipping Address",
+              CUST_CONTACT: "Contact Number",
+              CUST_EMAIL_ID: "Email",
+              CUST_GST_NO: "GST Number",
+              CUST_STATE_CODE_NO: "State Code"
+            },
+            suppliers: {
+              SUP_ID: "ID",
+              SUP_NAME: "Supplier Name",
+              SUP_BILL_ADD: "Billing Address",
+              SUP_SHIP_ADD: "Shipping Address",
+              SUP_CONTACT: "Contact Number",
+              SUP_EMAIL_ID: "Email",
+              SUP_GST_NO: "GST Number",
+              SUP_STATE_CODE_NO: "State Code"
+            }
+          };
+
+          const displayMap = columnDisplayNames[tab] || {};
+
+          table.innerHTML = `<tr>${headers.map(h => `<th>${displayMap[h] || h}</th>`).join('')}</tr>`;
           data.forEach(row => {
             const tr = document.createElement('tr');
             headers.forEach(h => {
@@ -42,22 +76,27 @@ function showForm(tab) {
 
   if (tab === 'inventory') {
     form.innerHTML = `
-      <label>Name:</label><input type="text" name="name" required><br>
-      <label>Part Number:</label><input type="text" name="partNumber" required><br>
+      <label>Item Name:</label><input type="text" name="name" required><br>
+      <label>Item Code:</label><input type="text" name="partNumber" required><br>
       <button type="submit">Add Entry</button>`;
-  } else if (tab === 'consumers') {
+  } else if (tab === 'customers') {
     form.innerHTML = `
-      <label>Consumer Name:</label><input type="text" name="name" required><br>
-	  <label>Consumer Address:</label><input type="text" name="Address" required><br>
-	  <label>Consumer GST NO:</label><input type="text" name="GST NO" required><br>
-	  <label>Consumer STATE CODE:</label><input type="text" name="STATE CODE" required><br>
-      <label>Consumer Contact:</label><input type="text" name="contactno" required>
-	  <label>Consumer Email:</label><input type="text" name="Email" required><br>
+      <label>Customer Name:</label><input type="text" name="name" required><br>
+      <label>Billing Address:</label><input type="text" name="Address" required><br>
+      <label>GST Number:</label><input type="text" name="GST NO" required><br>
+      <label>State Code:</label><input type="text" name="STATE CODE" required><br>
+      <label>Contact Number:</label><input type="text" name="contactno" required><br>
+      <label>Email:</label><input type="text" name="Email" required><br>
       <button type="submit">Add Entry</button>`;
   } else if (tab === 'suppliers') {
     form.innerHTML = `
       <label>Supplier Name:</label><input type="text" name="name" required><br>
-      <label>Address:</label><input type="text" name="address" required><br>
+      <label>Billing Address:</label><input type="text" name="address" required><br>
+      <label>Shipping Address:</label><input type="text" name="shipping" required><br>
+      <label>Contact Number:</label><input type="text" name="contact" required><br>
+      <label>Email:</label><input type="text" name="email" required><br>
+      <label>GST Number:</label><input type="text" name="gst" required><br>
+      <label>State Code:</label><input type="text" name="statecode" required><br>
       <button type="submit">Add Entry</button>`;
   }
 

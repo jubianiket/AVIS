@@ -1,0 +1,15 @@
+CREATE TABLE [dbo].[cust_details] (
+    [CUST_ID]            VARCHAR (100) NOT NULL,
+    [CUST_NAME]          VARCHAR (100) NULL,
+    [CUST_BILL_ADD]      VARCHAR (MAX) NULL,
+    [CUST_SHIP_ADD]      VARCHAR (MAX) NULL,
+    [CUST_CONTACT]       VARCHAR (15)  NULL,
+    [CUST_EMAIL_ID]      VARCHAR (100) NULL,
+    [CUST_GST_NO]        VARCHAR (20)  NULL,
+    [CUST_STATE_CODE_NO] VARCHAR (10)  NULL,
+    CONSTRAINT [PK_cust_details_CUST_ID] PRIMARY KEY CLUSTERED ([CUST_ID] ASC)
+);
+
+
+GO
+
